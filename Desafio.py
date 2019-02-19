@@ -3,13 +3,11 @@ import sqlite3
 import os
 import time
 import hashlib
-import json
 import shutil
 from datetime import date
 from os import path
 from bs4 import BeautifulSoup as bs
 
-jsonPath = path.join(os.getcwd(), "md5List.json")
 bdPath = path.join(os.getcwd(), "sqlite.db")
 downPath = path.join(os.getcwd(), "Downloads", "")
 
@@ -46,7 +44,10 @@ def getMD5(key, idD):
 		time.sleep(1)
 
 	if os.path.isfile(diarioPath):
-		md5 = hashlib.md5(open(diarioPath,'rb').read()).hexdigest()
+		arq = open(diarioPath,'rb')
+		conteudo = arq.read()
+		md5 = hashlib.md5(conteudo).hexdigest()
+		arq.close()
 	return md5
 
 def toISO(data):
