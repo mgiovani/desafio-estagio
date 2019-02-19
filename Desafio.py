@@ -125,11 +125,10 @@ def getMD5List(data):
     deletaArquivos()
     return listaMd5
 
-
 def main():
-	data = '2018-02-18'
-	while data != '0':
-		data = input("Informe uma data no formato ISO (AAAA-MM-DD): ")
+	while True:
+		data = input("Data no formato ISO (AAAA-MM-DD): ")
+		if data == '': break
 		print (getMD5List(data))
 
 if __name__ == "__main__":
