@@ -13,6 +13,16 @@
 5. **DeletaArquivos():** Por ser uma função de conferência para o processamento todos os PDF's baixados através do conjunto de funções aqui presente necessariamente já existe armazenado em algum outro lugar e sua existência seria desnecessariamente redundante. Em um longo prazo os PDF's poderiam tomar muito espaço para nada pois seu MD5 já está persistido.
 6. **Leitura da Entrada:** A leitura do arquivo .py é feita de maneira sequêncial e até a entrada de uma data vazia com a intenção de facilitar/posibilitar testes e execuções em massa.
 
+## Melhoria Proposta
+1. **Pré-carga:** O código foi previamente escrito para suportar uma pré-carga de todos os diários já publicados então direcionando um .txt com todas as datas para a entrada do .py possibilitaria que ele baixasse estes arquivos e calculasse previamente seus MD5, assim quando necessários novamente sua consulta seria feita de forma instantânea, sem aguardo por downloads.
+
+## Montagem dos Testes
+1. **Processo:** Para montagem dos testes unitários foi efetuado download diretamente do [site do TSE](http://www.tse.jus.br/servicos-judiciais/publicacoes-oficiais/diario-da-justica-eletronico/diario-da-justica-eletronico-1) e cada PDF foi submetido ao verificador built in do Windows utilizando o código abaixo. Foram criados 4 testes considerados como válidos e 4 considerados como inválidos. 
+```shell
+C:\Windows\system32\CertUtil.exe -hashfile <NOME_ARQUIVO>.pdf MD5
+```
+
+
 ## Ambiente Utilizado
 1. [Jupyter Notebook - PiP Version](https://jupyter.org/install)
 2. [Notepad++](https://notepad-plus-plus.org/download/v7.6.3.html)
