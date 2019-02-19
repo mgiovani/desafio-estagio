@@ -130,7 +130,8 @@ def getMD5List(data):
 		if md5Diario == -1: 
 			md5Diario = getMD5(key, idDiario)
 			insereBD(str(key), str(dataDiario), str(md5Diario), idDiario)
-		listaMd5.append(md5Diario)
+		if md5Diario != 'Request nao realizado': 
+			listaMd5.append(md5Diario)
 	
 	#Evita acumulo de pdfs redundantes 
 	deletaArquivos()

@@ -7,7 +7,7 @@ Todos os dias, a equipe de Processamento tem que verificar se os diários do [Tr
 
 ## Solução Proposta
 
-A solução é um conjunto de funções que recebe uma data no formato ISO e retorna uma lista dos MD5 dos PDF's daquele dia, assim como proposto. Para isso são utilizadas um GET direto ao site do TSE que retorna os diários daquele dia e é feito um POST para cada um deles afim de se obter o PDF referente. Com este PDF em mãos o hash é facilmente extraído e adicionando em um banco de dados SQLite para acelerar consultas com mesmo resultado e não realizar processamento desnecessário. Isso compõe o fluxo principal das funções que contam com lançamentos de algumas exceções descritas posteriormente.
+A solução é um conjunto de funções que recebe uma data no formato ISO e retorna uma lista dos MD5 dos PDF's daquele dia, assim como proposto. Para isso são utilizadas um GET direto ao site do TSE que retorna os diários daquele dia e é feito um POST para cada um deles a fim de se obter o PDF referente. Com este PDF em mãos o hash é facilmente extraído e adicionando em um banco de dados SQLite para acelerar consultas com mesmo resultado e não realizar processamento desnecessário. Isso compõe o fluxo principal das funções que contam com lançamentos de algumas exceções descritas posteriormente.
 
 ## Requisitos
 1. Python 3.X.X
@@ -62,6 +62,33 @@ $ python Testes.py
 ----------------------------------------------------------------------
 Ran 8 tests in 0.259s
 OK
+```
+	
+## Executando Preload
+
+1. Para clonar o repositório basta usar o seguinte comando no diretório escolhido:
+```sh
+$ git clone https://github.com/mgiovani/desafio-estagio.git
+```
+
+2. Para alterar o período do preload (padrão de 1 ano) basta alterar as seguintes variáveis do arquivo PreLoad.py:
+```python
+dataInicial = date(2018, 1, 1)
+dataFinal = date(2019, 2, 28)
+```
+
+3. Dentro da pasta raiz do repositório a seguinte chamada inicia o preload:
+```sh
+$ python PreLoad.py
+```
+
+4. Enquanto o código está sendo executado será mostrado algo como:
+```sh
+2018-01-01 []
+2018-01-02 ['36ea65471a94bbcff2242c70e0c00b65']
+2018-01-03 ['f11c228ca9ece4ede7a65c6386e68d4f']
+2018-01-04 ['1d137000a73818371682c7fecad5b583']
+2018-01-05 ['32181366f209bda57cbf4f042c89eb89']
 ```
 
 ## Exceções e Retornos
