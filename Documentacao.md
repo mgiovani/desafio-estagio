@@ -12,14 +12,14 @@ A solução é um conjunto de funções que recebe uma data no formato ISO e ret
 ## Requisitos
 1. Python 3.X.X
 2. Módulos Python:
-2.1 requests
-2.2 sqlite3
-2.3 os
-2.4 time
-2.5 hashlib
-2.6 shutil
-2.7 datetime
-2.8 bs4
+	1. requests
+	2. sqlite3
+	3. os
+	4. time
+	5. hashlib
+	6. shutil
+	7. datetime
+	8. bs4
 
 
 ## Executando Projeto
